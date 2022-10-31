@@ -1,0 +1,6 @@
+const CHANGE_NAME = "CHANGE_NAME";
+const GET_BANNER = "GET_BANNER"
+export {
+    CHANGE_NAME,
+    GET_BANNER
+}
