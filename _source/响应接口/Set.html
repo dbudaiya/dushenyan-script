@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 不能通过Vue对象来实现响应。Vue主要在开始时创建所有属性，我们通过Vue.set实现 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <p style="font-size: 20px;">
+    计数器：{{ pros.id }}
+  </p>
+
+  <button v-on:click="pros.id++" style="font-size: 25px;">点我</button>
+</div>
+<script>
+  //创建一个对象
+  let budai = {       //这段代码须放在脚本里面不能放在Vue框架里面！！
+    "id": 1,
+    "name": "book",
+    "picek": "20.20"
+  };
+
+  //实例化对象
+  let vm = new Vue({
+    el: "#app",
+    data: {
+      counter: 1,
+      pros: budai      //赋值给属性
+    }
+  });
+  Vue.set(budai, 'qty', 1); //只需再次添加即可，创建好qtr方法
+  console.log(vm);
+  vm.$watch('counter', function (nval, oval) {
+    alert('计数器变化：' + oval + '变为' + nval + '!')
+  });
+</script>
+</body>
+
+</html>

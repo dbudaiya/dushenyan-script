@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<!--
+  v-model其实是一个语法糖，背后本质上是一个包含两个操作
+  1. v-bind绑定是一个value属性
+  2. v-on指令给当前元素绑定input事件(监听)
+  -->
+<body>
+<div id="app">
+<!--  <input type="text" v-bind:value="message" v-on:input="valueMessage">-->
+  <input type="text" :value="message" @input=" message = $event.target.value">
+  <p>{{message}}</p>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  // noinspection BadExpressionStatementJS
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      message: "布袋书"
+    },
+    methods: {
+      valueMessage:function(event){
+        this.message = event.target.value;
+      }
+    }
+  });
+</script>
+</body>
+</html>

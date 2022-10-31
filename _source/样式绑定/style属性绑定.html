@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--  <h2 :style="{key(属性名):'value(属性值)',}">布袋书</h2>-->
+  <!--当成字符串解析加上’ ‘，否则是当做一个变量去解析-->
+<!--  <h2 :style="{fontSize:'122px',color:'red'}">布袋书</h2> -->
+  <h2 :style="{fontSize:finalSize+'px'}">布袋书 </h2>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      finalSize:150,
+    }
+  });
+</script>
+</body>
+</html>

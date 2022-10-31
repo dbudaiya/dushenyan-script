@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 指令是带有v-前缀的特殊属性
+    用于表达式的值改变时1，某些行为应用到DOM上 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 加载cdn文件框架 -->
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <p v-if="bool">这段内容将会被显示出来</p>
+  <p v-if="bool1">这段内容将不会被显示出来</p>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      bool: true,
+      //定义布尔型变量，不能添加双引号，或者单引号；后面还有数据这直接加上逗号即可。
+      bool1: false
+
+    }
+  });
+</script>
+</body>
+
+</html>

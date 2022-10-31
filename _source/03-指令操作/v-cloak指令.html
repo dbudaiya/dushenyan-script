@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<div id="app" v-cloak>
+  {{message}}
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  /*
+  * cloak中文意思；斗篷
+  * 在vue解析之前，div中有一个属性v-cloak
+  * 在下面添加了一个等待过程模拟浏览器无法解析JS文件时的情况*/
+  setTimeout(function () {
+    const budai = new Vue({
+      el: "#app",
+      data: {
+        message: "你好啊！！"
+      }
+    });
+  }, 2000)
+</script>
+</body>
+</html>

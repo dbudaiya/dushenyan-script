@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--1. 选择一个-->
+  <select  v-model="fruits">
+    <option value="葡萄">葡萄</option>
+    <option value="菠萝">菠萝</option>
+    <option value="哈密瓜">哈密瓜</option>
+    <option value="香蕉">香蕉</option>
+    </option>
+  </select>
+  <h3>你最喜欢哪个：{{fruits}}</h3>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      fruits:"香蕉"
+    },
+  });
+</script>
+</body>
+</html>

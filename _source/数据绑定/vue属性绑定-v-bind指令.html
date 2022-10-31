@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+<!--
+v-bind主要用于属性绑定，比如：Style，href，value，class，id，targer属性等等
+只要是属性就可以用v-hind指令进行绑定！！
+v-bind主要属性绑定，vue官方提供一个简写方式：v-bind
+ <a v-hind:href="url"></a>  等同于 <a :href="url"></a>
+ -->
+<div id="app">
+  <!--  <label for="r1">黑色字体</label>-->
+  <p>黑色字体 <input type="checkbox" v-model="message">
+  </p>
+  <div v-bind:class="{'fontStyle':message}">对属性指令的学习</div>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      message: false
+    },
+    methods: {}
+  });
+</script>
+<style>
+  .fontStyle {
+    background-color: red;
+  }
+</style>
+</body>
+
+</html>

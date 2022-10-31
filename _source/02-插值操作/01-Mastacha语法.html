@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2 v-text="message+'!!'"></h2>
+    <h2 v-once>这个值将不会改变：{{message}}</h2>
+    <h2>{{message+" "+message_1}}</h2>
+    <p>试试：<span v-html="code">怦然心动</span></p>
+  </div>
+  <script src="../源码/vue.min.js"></script>
+  <script>
+    const budai = new Vue({
+      el: "#app",
+      data: {
+        message: "你好",
+        message_1: "杜审言",
+        code: "<span style='color: red;font-size:27px'>v-html指令</span>"
+      },
+      methods: {}
+    });
+  </script>
+</body>
+
+</html>

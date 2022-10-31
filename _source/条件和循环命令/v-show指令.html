@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js中v-show指令和v-if 指令的区别</title>
+  <script src="../源码/vue.min.js"></script>
+  <!--加载本地vue.js的框架-->
+</head>
+<body>
+<!--定义div区块的id的值,这里定义的值为"app",后面vue会使用该值-->
+<div id="app">
+  <!--属性xianshi1的值为true,则下面段落内容会显示在浏览器-->
+  <div v-show="xianshi1" id="id01">show=true</div>
+  <!--属性xianshi2的值为false,则下面段落内容不会显示在浏览器-->
+  <div v-show="xianshi2" id="id02">show=false</div>
+  <button onClick="my01()">第1个按钮：读取show的Dom内容</button>
+
+  <!--属性xianshi1的值为true,则下面段落内容会显示在浏览器-->
+  <div v-if="xianshi1" id="id03">if=true</div>
+  <!--属性xianshi2的值为false,则下面段落内容不会显示在浏览器-->
+  <div v-if="xianshi2" id="id04">if=false</div>
+  <button onClick="my02()">第2个按钮：读取if的Dom内容</button>
+</div>
+
+<script>
+  //下面是Vue.js的代码块-开始
+  new Vue({
+    el: '#app',//app为前面div区块的id的值，通过"#"号绑定
+    //data区域定义属性的值
+    data: {
+      xianshi1:true, //定义布尔型值
+      xianshi2:false //定义布尔型值
+      //后面没有数据，则这里定义完毕后面不需要跟上逗号"，"
+    }
+  })//Vue.js的代码块-结束
+
+  function my01(){
+    var tmp= "";
+    tmp = tmp + "id01内容：" + document.getElementById("id01").innerHTML;
+    tmp = tmp + "| id02内容：" + document.getElementById("id02").innerHTML;
+    //弹出标签的内容
+    alert(tmp);
+  }
+  function my02(){
+    //弹出标签的内容
+    alert("id03内容：" + document.getElementById("id03").innerHTML)
+    //判断id为"id04"的标签是否存在
+    if(document.getElementById("id04")){
+    }else{
+      //标签不存在
+      alert("id为'id04'的标签不存在");
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <div id="app">
+    <!--1.stop修饰符的使用-->
+    <div @click="divClick">
+      abc
+      <button @click.stop="btnClick">++</button>
+    </div>
+  </div>
+  <script src="../源码/vue.min.js"></script>
+  <script>
+    const budai = new Vue({
+      el: "#app",
+      data: {
+      },
+      methods: {
+        divClick() {
+          console.log("divClick");
+        },
+        btnClick() {
+          console.log("BtnClick");
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

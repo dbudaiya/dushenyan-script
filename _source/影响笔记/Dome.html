@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <my-cpn></my-cpn>
+</div>
+<template id="budai1">
+  <h1>天才在于勤奋</h1>
+</template>
+<script src="../源码/vue.min.js"></script>
+<script>
+  /*const conpts = Vue.extend({
+    template: `<h2>我是天才1</h2>`
+  });*/
+  //Vue.component('my-cpn', conpts)全剧组建
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      message: ""
+    },
+    components: {
+      'my-cpn': {
+        template: '#budai1'
+      }
+    }
+  });
+</script>
+</body>
+</html>

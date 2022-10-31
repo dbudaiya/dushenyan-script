@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>document</title>
+  <script src="../源码/vue.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+<div id="app">
+  <p v-if="code">字段</p>
+  <p v-if="code1">布袋</p>
+</div>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      code: true,
+      code1: false
+    }
+  });
+</script>
+</body>
+
+</html>

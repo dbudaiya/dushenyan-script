@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>计数器</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :cmov="movies"></cpn>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        movies: ['海王', '海贼王', '布袋书'],
+        message: '你好啊！！'
+      },
+      components: {
+        cpn: {
+          template: `
+          <div>
+            <h2>{{cmsg}}</h2>
+            <p>{{cmov}}</p>
+          </div>`,
+          props: {
+            cmsg: {
+              type: String,
+              default: "小王八蛋",
+              request: true
+            },
+            cmov: {
+              type: Array,
+              default() {
+                return []
+              }
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

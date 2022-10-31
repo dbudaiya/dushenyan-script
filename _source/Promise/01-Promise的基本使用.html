@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permise的基本使用</title>
+
+</head>
+
+<body>
+  <script>
+    //1,使用setTimeout()
+    // setTimeout(()=>{
+    //   console.log('helloworld!!');
+    // },1000)
+
+    //resolve,reject本身也是函数
+
+    //回调地狱
+    new Promise((resolve, reject) => {
+      //第一次网络请求
+      setTimeout(() => {
+        // 成功时调用
+        resolve()
+        // 失败时调用
+        reject()
+      }, 1000)
+    }).then(() => {
+      //第一次拿到结果的处理代码
+      console.log("小红书");
+      console.log("小红书");
+      console.log("小红书");
+      console.log("小红书");
+      console.log("小红书");
+
+      return new Promise((resolve, reject) => {
+        //第二次网络请求
+        setTimeout(() => {
+          resolve()
+          reject()
+        }, 1000)
+      }).then(() => {
+        // 第二次拿到结果的处理代码
+        console.log("斗鱼");
+        console.log("斗鱼");
+        console.log("斗鱼");
+        console.log("斗鱼");
+
+        return new Promise((reslove, reject) => {
+          //第三次网络请求
+          setTimeout(() => {
+            reslove()
+            reject()
+          }, 1000)
+        }).then(() => {
+          // 第三次拿到结果的处理代码
+          console.log("虎牙");
+          console.log("虎牙");
+          console.log("虎牙");
+          console.log("虎牙");
+
+          return 0
+        }).catch(() => {
+          console.log("第三个函数失败");
+        })
+      }).catch(() => {
+        console.log("第二个函数失败");
+      })
+
+    }).catch(() => {
+      console.log("第一个函数失败");
+    })
+
+
+
+
+   
+
+    //3.什么情况下灰用到Promise？一般情况下是有异步操作时，使用Promise对这个异步操作进行封装
+  </script>
+</body>
+
+</html>

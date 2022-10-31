@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--修饰符是以半角句号，指明的特殊后缀，用于指出一个指令应该以特殊方式绑定，例如：prevent修饰符告诉v-on指令对触发事件调用  -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <form action="" v-on:submit.prevent="onSubmit"></form>
+</div>
+<script>
+  new Vue({
+    el: "#app",
+    data: {}
+  });
+</script>
+</body>
+
+</html>

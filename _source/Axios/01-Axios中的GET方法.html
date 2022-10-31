@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axios</title>
+  <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>网站列表</h1>
+    <!-- <p>{{info}}</p> -->
+    <div v-for="site in info">
+      {{site.id}}
+    </div>
+  </div>
+  <div id="App">
+
+  </div>
+  <!-- 1.简单的读取json数据 -->
+  <!-- <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          data: []
+        }
+      },
+      mounted() {
+        axios.get('https://ku.qingnian8.com/wxList.php').then(data => {
+          this.data = data
+        }).catch(err => {
+          console.log(err);
+        })
+      }
+    })
+  </script> -->
+
+  <!-- 2.使用respose.data读取json数据 -->
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          info: []
+        }
+      },
+      mounted() {
+        axios.get('https://ku.qingnian8.com/wxList.php').then(res => {
+          this.info = res.data
+        }).catch(err => {
+          console.log(err);
+        })
+      }
+    })
+  </script>
+
+  <!-- 3.GET方法传递参数说明 -->
+  <script>
+    new Vue({
+      el: '#App',
+      data() {
+        return {
+
+        }
+      },
+      mounted() {
+        axios.get('https://ku.qingnian8.com/wxList.php').then(res => {
+          this.info = res.data
+        }).catch(err => {
+          console.log("请求出错!!");
+        })
+
+        //通过params设置参数
+        axios.get('https://ku.qingnian8.com/wxList.php', {
+          params: {
+            // ID.....
+          }
+        }
+        ).then(res => {
+          this.info = res.data
+        }).catch(err => {
+          console.log("请求出错!!");
+        })
+      }
+    })
+  </script>
+
+
+
+  <!-- <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          info: null
+        }
+      },
+      mounted() {
+        axios.get('https://ku.qingnian8.com/wxList.php').then(res => {
+          this.info = res
+        }).catch(err => {
+          // 请求失败处理
+          console.log(err);
+        })
+      }
+    })
+  </script> -->
+</body>
+
+</html>

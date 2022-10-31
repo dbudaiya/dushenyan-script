@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <label for="budai">
+    <input type="checkbox" v-model="isAgree" id="budai">同意协议
+  </label>
+  <h3>你选择的是：{{isAgree}}</h3>
+  <button :disabled="!isAgree">下一步</button>
+<p>-------------------------------------------------</p>
+  <!--2. checkbox多选框-->
+  <label for="budai1">
+    <input type="checkbox" value="足球" id="budai1" v-model="array">足球
+    <input type="checkbox" value="篮球" v-model="array">蓝球
+    <input type="checkbox" value="排球" v-model="array">排球
+    <input type="checkbox" value="网球" v-model="array">网球
+  </label>
+  <h3>你的爱好是{{array}}</h3>
+
+  <p>-----------值绑定---------------</p>
+  <label for="" v-for="item in budaiHobbies" :for="item">
+    <input type="checkbox" :value="item" v-model="budaiArray">{{item}}
+  </label>
+  <h3>你最喜欢的水果是：{{budaiArray}}</h3>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      message: "",
+      isAgree: false,//单选框
+      array :[],//多选框,
+      budaiArray:[],
+      budaiHobbies:['西瓜','葡萄','芒果','提子','柚子','香蕉','山楂','苹果','柠檬','金桔','毛桃','猕猴桃','无花果',
+        '椰子','杨桃','杏子','橙子','沃柑','释迦果','蓝莓','荔枝']
+    },
+  });
+</script>
+</body>
+</html>

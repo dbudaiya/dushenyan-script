@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+</head>
+
+<body>
+<div id="app">
+  <a v-bind:href="url">全写</a><br>
+  <a :href="url">简写</a><br>
+  <button v-on:click="something">点击按钮弹出框</button>
+  <br>
+  <button @click="something">点击按钮弹出框</button>
+</div>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      url: "https://www.baidu.com"
+    },
+    methods: {
+      something: function () {
+        alert("布袋鼠")
+      }
+    }
+  });
+</script>
+</body>
+
+</html>

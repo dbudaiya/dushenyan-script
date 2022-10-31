@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03-执行多个并发请求</title>
+  <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+  <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <ul v-for="infos in info">
+      <li>{{infos.title}}</li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <ul v-for="tops in top">
+      <li>{{tops.posttime}}</li>
+    </ul>
+  </div>
+  <script type="text/javascript">
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          info: [],
+          top: []
+        }
+      },
+      mounted() {
+        axios.all([this.getUserAccount(), this.getUserPermissions()])
+          .then(axios.spread((acct, perms) => {
+            this.info = acct.data,
+              this.top = perms.data
+          }))
+          .catch(err => {
+            console.log(err);
+          })
+      },
+      methods: {
+        getUserAccount: function () {
+          return axios.get('https://ku.qingnian8.com/wxList.php');
+        },
+        getUserPermissions: function () {
+          return axios.get('https://ku.qingnian8.com/wxList.php');
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

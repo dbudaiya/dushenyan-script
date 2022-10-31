@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <cpn v-bind:cmovies="movies" v-bind:cmessage="message"></cpn>
+  <!--验证默认值时将删掉：v-bind:cmessage="message"-->
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>{{cmessage}}</h2>
+    <p>{{cmovies}}</p>
+  </div>
+</template>
+
+<script src="../源码/vue.min.js"></script>
+<script>
+//父传子：props
+const cpn = {
+  template: '#cpn',
+  //props: ['cmovies', 'cmessage'],
+
+  props: {
+    //1.类型限制
+    /*cmovies: Array,
+    cmessage: String*/
+
+    //2.提供一些默认值,以及必传值
+    cmessage: {
+      type: String,
+      default: 'aaaaa',
+      request: true
+    },
+    //类型时对象或数组时，默认值必须是一个函数
+    cmovies: {
+      type: Array,
+      default() {
+        return []
+      }
+    },
+  }
+};
+
+const budai = new Vue({
+  el: "#app",
+  data: {
+    movies: ['海王', '海贼王', '布袋书'],
+    message: '你好啊！！'
+  },
+  components: {
+    cpn: cpn
+  }
+});
+</script>
+</body>
+</html>

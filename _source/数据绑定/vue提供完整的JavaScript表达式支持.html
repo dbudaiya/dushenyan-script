@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+  {{ number +2 }}
+  <p>{{ 5*5 }}</p>
+  <p>{{ ok? 'YES':'NO' }}</p>
+  <p>{{ 'YES'+' '+'NO' }}</p>
+  <p>{{ (new Date()).getFullYear() }}</p>
+  <p>{{ message.split('').reverse().join('') }}</p>
+</div>
+
+<script>
+  let number = 1;
+  const ipad = {
+    ok: false,
+    message: "杜审言"    //定义字符串变量
+  };
+  new Vue({
+    el: "#app", //app前面div区块的id值，提供#绑定
+    data: ipad
+  })
+</script>
+</body>
+
+</html>

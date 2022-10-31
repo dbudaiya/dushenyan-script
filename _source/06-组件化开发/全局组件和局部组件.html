@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app1">
+  <!--3.使用组件-->
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+<div id="app2">
+  <cpn></cpn>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  //1. 创建组件构造器
+  const cpn1 = Vue.extend({
+    template: `
+    <div>
+      <h2>组件标题</h2>
+      <p>我是组件中的一个段落内容</p>
+    </div>`
+  });
+
+  //2. 注册组件，并且定义组件标签名称(全局组件：意味着可以在多个Vue的实例下面使用)
+  //Vue.component('cpn', cpn1)
+
+  //疑问：怎么注册才是局部组件呢？
+
+
+  const budai = new Vue({
+    el: '#app1',
+    data: {
+      message: '你好啊！'
+    },
+    components: {
+      //cpn 使用组件时的标签名（不要忘记了后面加上s）
+      cpn: cpn1
+    }
+  });
+
+  /*const budai2 = new Vue({//对其进行挂载,全局属性才能使用
+    el:'#app2',
+  })*/
+</script>
+</body>
+</html>

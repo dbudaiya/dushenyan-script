@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--使用``能对其进行换行-->
+<!--组件步骤解析
+    1. Vue.extend():
+    调用Vue.extend()创建的是一个组件构造器
+    通常在创建组件构造器时，传入template代表我们自定义组件模板
+    该模板就是在使用组件的地方要显示的HTML代码
+    事实上，这种写法在Vue2.x文档中几乎看不到了，会直接使用下面我们讲到的语法糖，但是质料还是会提到这种方式，而且这种方式是学习后面方式的基础
+
+    2. Vue.component():
+   调用Vue.component()是将刚才的组件构造器注册为一个组件，并且给他起了一个组件的名称
+   所以需要传递两个参数：1.注册组件的标签名 2. 组件构造器
+
+    3. 组件必须挂载在某个实例下，否则他不会生效
+    我们来看下面我使用了三次<my-cpn></my-cpn>
+    而第三次其实并没有生效-->
+<div id="app">
+  <!--3.使用组件-->
+  <my-cpn></my-cpn>
+  <my-cpn></my-cpn>
+
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  //1. 创建组件构造器
+  const cPn = Vue.extend({
+    template: `
+    <div>
+      <h2>组件标题</h2>
+      <p>我是组件中的一个段落内容</p>
+    </div>`
+  })
+
+  //2. 注册组件，并且定义组件标签名称
+  Vue.component('my-cpn', cPn)
+  const budai = new Vue({
+    el:'#app',
+  });
+</script>
+</body>
+</html>

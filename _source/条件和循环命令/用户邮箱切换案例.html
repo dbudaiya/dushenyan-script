@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <span v-if="isUser">
+    <label for="username">用户登录</label>
+    <input type="text" id="username" placeholder="用户账号">
+  </span>
+  <sapn v-else>
+    <labal for="email">邮箱登录</labal>
+    <input type="text" id="email" placeholder="用户邮箱">
+  </sapn>
+  <button @click="isUser = !isUser">切换登录</button><!---->
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      isUser :true
+    },
+  });
+</script>
+</body>
+</html>

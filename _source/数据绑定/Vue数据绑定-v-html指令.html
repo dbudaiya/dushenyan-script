@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <p>{{ message }}</p> <!--外部内容（显示在页面） -->
+  <p>{{ message_1 }}</p>
+  <p v-html="message"></p><!-- 外部内容（不显示页面） -->
+  <p v-html="message_1"></p>
+</div>
+<script>
+  let budai = {
+    message: "V-html指令（正常文本）",//正常输出文本（纯文本，不带html文本）
+    message_1: "<h1>带html代码的变量</h1>"//定义属性message的值带有html标签
+  }
+  new Vue({
+    el: "#app",
+    data: budai,
+  });
+</script>
+</body>
+
+</html>

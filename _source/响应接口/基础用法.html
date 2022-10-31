@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- VUe.set方法用于设置对象的属性，解决VUe无法检测属性的限制：
+    Vue.set(target,key,value）
+    参数说明：
+    m target ：可以是对象或者数组。
+    n key:可以是字符或者数字
+    n value:可以是任何类型
+    
+    -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <p>
+      计数器：{{ pros.id }}
+    </p>
+    <button @click="pros.id++">点我</button>
+  </div>
+
+
+  <script>
+    //创建一个对象
+    let budai = {       //这段代码须放在脚本里面不能放在Vue框架里面！！
+      "id": 1,
+      "name": "book",
+      "picek": "20.20"
+    };
+
+    //实例化对象
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        counter: 1,
+        pros: budai      //赋值给属性
+      }
+    });
+    vm.pros.qty = "1";
+    console.log(vm);
+    vm.$watch('counter', function (nval, oval) {
+      alert('计数器变化：' + oval + '变为' + nval + '!')
+
+    });
+
+
+  </script>
+</body>
+
+</html>

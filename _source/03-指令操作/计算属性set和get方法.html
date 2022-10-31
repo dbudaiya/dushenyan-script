@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--  语法糖显示-->
+  <h2>{{fullName}}</h2>
+  <h2></h2>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      firstName: "kobe",
+      lastName: 'James'
+    },
+    //计算属性，不需要加上动词
+    computed: {
+      //name = 'codername'
+      //计算属性一般是没有set方法的，只读属性
+      fullName: {
+        set: function () {
+          console.log("------------")
+        },
+        get: function () {
+          return this.firstName + ' ' + this.lastName;
+        }
+      }
+      /*fullName: function () {
+        return this.firstName + ' ' + this.lastName;
+      }*/
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h3>--------------修饰符：lazy(懒加载)-------------------</h3>
+  <!--1. 修饰符：lazy(懒加载)-->
+  <input type="text" v-model.lazy="message">
+  <h2>你敲键盘上的enter键：{{message}}</h2><br>
+
+
+  <h3>------------修饰符：number---------------------</h3>
+  <!--2. 修饰符：number-->
+  <input type="number" v-model="age">
+  <h3>{{age}}--{{typeof age}}</h3><br>
+
+
+  <h3>-------------3. 修饰符：trim(将空格给删除掉)--------------------</h3>
+  <!-- 3. 修饰符：trim(将空格给删除掉)-->
+  <input type="text" v-model.trim="name">
+  <h3>你输入的名字是：{{name}}</h3><br>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      message: "",
+      age :[],
+      name:""
+    },
+    methods: {}
+  });
+</script>
+</body>
+</html>

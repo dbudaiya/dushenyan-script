@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 该指令后面不需要跟任何表达式（v-for后面接表达式）。
+该指令表示元素和组件只渲染一次，不会随着数据的改变而改变。
+v-once在日常开发中用的很多，
+只渲染元素和组件一次，随后的渲染，使用了此指令的元素/组件及其所有的子节点，都会当作静态内容并跳过，这可以用于优化更新性能。
+常见用法如下：
+当修改input框的值时，使用了v-once指令的p元素不会随之改变，而第二个p元素时可以随之改变的，示例
+代码如下： -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+<div id="app">
+  <p v-once>{{ message }}</p> <!--message值不会改变-->
+  <p>{{ message }}</p>
+  <p>
+    <input type="text" v-model="message" >
+  </p>
+</div>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      message: "杜审言"
+    }
+  });
+</script>
+</body>
+
+</html>

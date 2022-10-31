@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 参数指令后以冒号指明
+    html的属性来讲，冒号后面跟上的就是html原来的属性
+ -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<!-- 根据v-hind指令跟上参数演示网址的打开，图片下载，点击事件的调用 -->
+
+<body>
+<div id="app">
+  <a :href="wanzhan">淘宝</a>
+</div>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      wanzhan: "http://www.baidu.com",
+    }
+  });
+</script>
+
+</body>
+
+</html>

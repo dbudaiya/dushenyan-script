@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>布局篇 计算属性</title>
+  <script src="../源码/vue.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>当前计数：{{count}}</h2>
+    <button v-on:click="count++">加数</button>
+    <button @click="sub()">减数</button>
+
+  </div>
+  <script>
+    let con = new Vue({
+      el: '#app',
+      data: {
+        count: 0
+      },
+      methods: {
+        add: function () {
+          this.count += 100
+        },
+        sub: function () {
+          if (this.count > 0) {
+            this.count--
+          } else {
+            this.count == 0
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

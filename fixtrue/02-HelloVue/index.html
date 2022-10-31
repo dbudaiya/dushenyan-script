@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="list-rendering">
+      <ul>
+        <!-- <li v-for="(item,index) in todos" :key="index">{{item.text}}</li> -->
+        <todo-item
+          v-for="(item,index) in todos"
+          :key="index"
+          :text="item.text"
+        ></todo-item>
+      </ul>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const ListRendering = {
+        data() {
+          return {
+            todos: [
+              { text: "Learn JavaScript" },
+              { text: "Learn Vue" },
+              { text: "Build something awesome" },
+            ],
+          };
+        },
+      };
+
+      const app = Vue.createApp(ListRendering);
+
+      //   大多数命名都是已大驼峰的形式
+      //  Vue.component
+      app.component("todo-item", {
+        props: ["text"],
+        template: "<li>{{text}}</li>",
+      });
+      const MyComponent = app.component("todo-item", {});
+      console.log(MyComponent);
+      console.log(app.version)
+      // Vue.directive
+      //   app.directive("focus", FocusDirective);
+
+      //   注册
+      //   app.use(LocalePlugin);
+
+      //conofig
+      console.log(app.config);
+      app.mount("#list-rendering");
+    </script>
+  </body>
+</html>

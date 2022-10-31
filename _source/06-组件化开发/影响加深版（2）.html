@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>组件化开发整合</title>
+    <script src="../源码/vue.min.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <down1></down1>
+    </div>
+    <script>
+      <div id="app">
+        <down1></down1>
+      </div>;
+    </script>
+    <script>
+      //1.创建组件构造器对象
+      const cpnC = Vue.extend({
+        template: `<div><h2>一个组件化案例</h2></div>`
+      });
+      //2.注册组件(全局组件)
+      //Vue.component('down', cpnC);
+
+      const cpnC2 = Vue.extend({
+        template: `<div><p>一个组件化案例111111111111111111</p><down></down></div>`,      //注意这是一个坑
+        components: {
+          down: cpnC
+        }
+      });
+
+      const budai1 = new Vue({
+        el: '#app',
+        data: {},
+        components: {
+          down1: cpnC2
+        }
+      });
+      //const budai2 = new Vue({})
+    </script>
+  </body>
+</html>

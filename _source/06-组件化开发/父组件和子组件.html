@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <bcpn></bcpn>
+  <acpn></acpn>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  //1. 创建第一个组件构造器（子组件）
+  const cpn1 = Vue.extend({
+    template: `
+    <div>
+      <h2>第一个标题</h2>
+      <p>一段话,哈哈哈</p>
+    </div>`
+  });
+
+
+  //2. 创建第二个组件构造器(父组件)
+  const cpn2 = Vue.extend({
+    template: `
+      <div>
+        <acpn></acpn>
+        <h2>第二个标题</h2>
+        <p>二段话，呵呵呵呵呵呵</p>
+      </div>`,
+    components: {
+      acpn: cpn1,
+    }
+  });
+
+  //root组件
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      message: ""
+    },
+    components: {
+      bcpn: cpn2,
+      acpn: cpn1,
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   关于Vue兼容问题，Vue.js使用了IE8不能模拟的ECMAScript5特性Vue.js支持所有兼容的ECMAScript5的浏览器
+   -->
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+</head>
+
+<body>
+  <!--数据绑定&#45;&#45;v-html指令
+数据绑定：Vue.js使用基于HTML的模板语法，也许开发者声明式的将DOM绑定至底层Vue实例的教程
+Vue.js核心是一个允许你采用简洁的模板语法来声明将数据渲染进Dom的系统。结合响应系统，在应用状态改变时，
+Vue能够智能的计算出重新渲染组件的最小代价并且应用到DOM操作上-->
+
+  <div id="app">
+    <h2>网站名称：{{si}}</h2>
+    <h3>网站地址:{{ url }}</h3>
+    <h4>给你的一段话：{{ details() }}</h4>
+  </div>
+  <script>
+    //取其精华
+    let dx = {
+      si: "布袋鼠",//文本插值
+      url: "www.baidu.com"
+    };
+    dx.url = "www.taobao.com";
+    //budai.$data.url = "budaishu";
+    const budai = new Vue({
+      el: "#app", //app为前面div区块的class值，通过“.”号绑定
+      data: dx,   //使用一个方法定义属性的值
+      methods: {
+        details: function () {
+          return this.url + "点击这个网址实现添加属性和方法！！！"
+        }
+      }
+    });
+  //document.write(budai.$data == dx)
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--使用methods来代替computed，效果上两个都是一个样的，但是computed
+是基于他的依赖缓存，只有相关依赖发生改变时才会重新取值。使用methods，在重新渲染的时候，函数总是会重新调用执行-->
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+  <!--cdn是一种加速策略，能够快速的提供js文件，再次引入vue.js文件-->
+  <style>
+    .lv {
+      height: 100px;
+      background: green;
+    }
+
+    .cu {
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div>
+    <button @click="jishu++">点击计数</button>
+
+    <div><!--插值表达式-->
+      <span>{{jishu}}</span>
+      <span>{{[1,2,3,4][2]}}</span>
+      <span>{{ {"name":"xiaoyu","age":20}.age }}</span>
+    </div>
+    <hr>
+    <button @click="say">打印一加一</button><!--这个不能给他后面加上括号，不知为啥-->
+
+  </div>
+  <hr>
+  <div :class="{lv:true,cu:true}">
+    <p>原始字符串：{{message}}</p>
+    <p>计算后反转字符串：{{reverseMessage}}</p>
+    <!--<p>计算后反转字符串：{{reverseMessage2()}}</p>-->
+    <!--{{message.split('').reverse().join('')}}-->
+  </div>
+  <p>{{site}}</p>
+</div>
+<script src="../源码/vue.min.js"></script>
+<script>
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      jishu: 0, //初始化
+      message: "有分析认为，在字节跳动不得不出售TikTok的情况下，" +
+        "微软可能是最合适的人。因为让微软和TikTok结合，可以在谷歌母公司Alphabet以及Facebook之外，" +
+        "再建立起一个强大的数字广告巨人",
+      name: '淘宝网',
+      url: 'http:www.taobao.com'
+    },
+    //计算属性区块
+    computed: {
+      reverseMessage: function () {
+        return this.message.split('').reverse().join('')
+      },
+      site: {
+        //getter
+        get: function () {
+          return this.name + ' ' + this.url
+        },
+        //setter
+        set: function () {
+          var names = newValue.split('|')
+          this.name = name[0]
+          this.url = names[names - length - 1]
+        }
+      }
+    },
+    methods: {
+      say: function (event) {
+        if (event) {
+          alert(event.target.tagName)
+          document.write("一加一为 2");
+        }
+      },
+      reverseMessage2() {
+        return this.message.split('').reverse().join('')
+      }
+    }
+  });
+</script>
+</body>
+</html>

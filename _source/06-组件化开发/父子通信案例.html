@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn :number ="message1" :number2 ="message2"></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <p>{{number}}</p>
+    <input type="text" v-model="number">
+    <p>{{number2}}</p> 
+    <input type="text" v-model="number2">
+  </div>
+</template>
+<script src="../源码/vue.min.js"></script>
+<script>
+  const budai = new Vue({
+    el: "#app",
+    data: {
+      message1: "budaishu",
+      message2: "Hello world!"
+    },
+    components: {
+      cpn: {
+        template:'#cpn',
+        props:{
+          number:String,
+          number2:String
+        },
+        data(){
+          return {
+            dnumber:this.number,
+            dnumber2 :this.number2
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

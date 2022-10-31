@@ -1,0 +1,15 @@
+new ->构造函数（1.保留一些状态信息2，执行存入的函数）
+Promise异步操作之后的三种状态
+  - pending ：等待状态
+  - fulfill ： 满足状态
+  - reject ： 拒绝状态
+
+Peomise无论是then还是catch都会返回一个Promise对象
+  - 所以进行链式调用
+  - Promise包装新的数据，讲promise对象返回
+  - Promise.resolve():讲数据包装成1一个Promise对象，并且内部回调reslove函数
+  - Promise.reject():讲数据包装成1一个Promise对象，并且内部回调reject函
+
+  resolve reject
+
+

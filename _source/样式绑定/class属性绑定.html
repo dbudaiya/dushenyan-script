@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>document</title>
+  <script src="../源码/vue.min.js"></script>
+  <style>
+    .first {
+      background-color: antiquewhite;
+    }
+
+    .second {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!--语法糖
+  <h2 v-bind:class="{key1:value1,key2:value2}">{{message}}</h2>键值对
+  -->
+    <!--  <div v-bind:class="{first: isTrue,second:isFalse}"></div>-->
+    <div v-bind:class="getclasses()"></div>
+    <button v-on:click="click()">按钮</button>
+  </div>
+  <script>
+    const compert = {
+      isTrue: true,
+      isFalse: false
+    }
+    const budai = new Vue({
+      el: "#app",
+      data: compert,
+      methods: {
+        click: function () {
+          this.isTrue = !this.isTrue
+        },
+        getclasses: function () {
+          return { first: this.isTrue, second: this.isFalse }/*避免过长*/
+          return ['first', 'second']   /*数组语法：写死的形式还不如直接class放入*/
+        }
+      }
+    });
+  </script>
+  <style>
+    .first {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+
+    .second {
+      width: 100px;
+      height: 50px;
+      background-color: yellow;
+    }
+  </style>
+</body>
+
+</html>

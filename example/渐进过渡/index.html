@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>vuejs练习</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<div id="demo">
+    <input v-model="query">
+    <ul>
+        <li v-for="item in list | filterBy query"
+            transition="staggered"
+            stagger="100">
+            {{item.msg}}
+        </li>
+    </ul>
+</div>
+<script src='../vue.min.js'></script>
+<script src="index.js"></script>
+</body>
+</html>

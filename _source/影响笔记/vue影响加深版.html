@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- vue是以数据为驱动，渐进式的web框架，MVVM双向绑定，虚拟DOM为核心和diff算法，所谓的虚拟dom和diff
+算法，是指当页面内容发生变化时，只更新改变的部分，是通过虚拟dom和diff算法实现这样的操作，效率非常
+高-->
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../源码/vue.min.js"></script>
+  <style>
+    .he {
+      background: yellow;
+      flex-flow: row;
+      font-family: 黑体;
+    }
+
+    .qu {
+      color: chartreuse;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div :style="classobject2">
+    <a :href="url" :target="target">
+      <h2 v-once>网站名称：{{site}},{{site}}</h2><!--指明此元素的数据只出现一次，数据内容的修改不影响此元素-->
+    </a>
+    <span>{{site}}</span>
+    <input type="text" v-model="site" v-focus><!--mvvn数据双向绑定-->
+    <span>页面载入时，input 元素自动获取焦点：</span>
+    <input type="text" v-on:input="changTitle">
+  </div>
+  <h3 :style="[css1,css2]">{{message}}</h3>
+  <p :class="classobject1">{{details()}}</p>
+  <p v-html="ondetails">，这是一段话</p><!--就好比是innerHTML-->
+  <p v-if="isTrue">这里使用了v-if，这里的内容将会显示出来，不想显现就在控制台中输入vm.isTrue =false</p>
+  <p>{{url| capitalize}}</p><!--这种是固定显示管道符-->
+  <ul>
+    <templat v-for="(item,index) in array" v-if="index >= 4"><!--模板中显示-->
+      <li>{{index}}---{{item}}</li>
+    </templat>
+  </ul>
+  <ul>
+    <li v-for="(item2,key,index) in object1" v-show="index < 2">{{index}}----{{key}}----{{item2}}</li>
+  </ul>
+  <div v-for="cp in products">
+    产品名称:{{cp.mc}}<br>
+    产品价格:{{cp.price}}<br>
+    产品编号:{{cp.id}}
+    <hr>
+  </div>
+</div>
+
+<script>
+  let mydata = {
+    site: "淘宝网",
+    url: 'http://www.baidu.com',
+    //url: '<h1>http://www.baidu.com</h1>',
+    ondetails: '<p>哎哎哎</p>', //定义属性ondetails值，带html标签,不能解析正在同时进行的代码,
+    fontSize: 50,
+    color: 'red',
+    message: '第一张，可以说是他幼年时代的相片，想必是\n' +
+      '在十岁前后拍下的。只见照片上的这个男孩子被众\n' +
+      '多的女人簇拥着（看来，这些女人是他的姐姐、妹\n' +
+      '妹、抑或堂表姐、堂表妹），他站在庭院的水池畔，\n' +
+      '身穿粗条纹的裙裤，将脑袋向左倾斜了近三十度，\n' +
+      '脸上挂着煞是丑陋的笑容。',
+    target: '_self',
+    isTrue: true,
+    css1: {fontSize: '15px'},
+    css2: {color: 'blue'},
+    array: ['香蕉', '牛奶', '苹果', '哈密瓜', '菠萝', '柚子', '橘子', '黄瓜'],
+    object1: {
+      name: '杜审言',
+      age: 19,
+      eat: 'food'
+    },
+    products: [
+      {mc: '产品名称00', price: '32423', id: 1},
+      {mc: '产品名称01', price: '121', id: 2},
+      {mc: '产品名称02', price: '313', id: 3}
+    ],
+    /* classobject: {
+       he: true,
+       qu: true
+     }*/
+  };
+  const vm = new Vue({
+    el: "#app",//绑定
+    //定义变量和属性
+    data: mydata,
+    //定义函数
+    methods: {
+      details() {
+        return "购物天堂指的是" + this.site
+      },
+      changTitle() {
+        console.log("我是事件响应input");
+      }
+
+    },
+    computed: {//计算属性
+      //return 返回一个样式使用的对象
+      classobject1() {
+        return {
+          he: this.isTrue,
+          qu: this.isTrue
+        }
+      },
+      classobject2() {
+        return {
+          color: this.color,
+          //fontSize: this.fontSize + 'px'
+        }
+      }
+    },
+    //下面是过滤器
+    filters: {
+      capitalize: function (value) {
+        if (!value) return '';
+        value = value.toString();
+        return value.charAt(0).toUpperCase() + value.slice(1);
+      }
+    },
+    directives: {
+      'focus': {
+        inserted(el) {
+          el.focus();
+        }
+      }
+    }
+  });
+  /*// 注册一个全局自定义指令 v-focus
+  Vue.directive('focus', {//focus前面不用加v-
+    // 当绑定元素插入到 DOM 中。
+    inserted: function (el) {
+      // 聚焦元素
+      el.focus()
+    }
+  })*/
+  /*document.write(vm.$data === mydata + "<br>");
+  document.write(vm.$el === document.getElementById('app'));*/
+</script>
+</body>
+</html>

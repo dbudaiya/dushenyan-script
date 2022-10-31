@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- v-cloak不需要表达式，实例结束编译时绑定html元素上移 
+注意：这时虽然已经加了指令 v-cloal，但是实际这时没有起到任何作用，当网速较慢，
+Vue.js 文件还没有加载完时，在页面会显示{{message}}的字样，直到Vue创建实例、编译模版时，
+DOM才会被替换，所以这个过程屏幕是有闪动的，需要配合CSS可以解决这个问题。
+-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+
+</head>
+
+<body>
+<div id="app" v-cloak>
+  <div :style="{'color':color,'fontSize':fontSize+'px'}">{{message}}</div>
+</div>
+<script>
+  new Vue({
+    el: "#app",
+    data: {
+      fontSize: '122',    //不用添加px
+      color: 'red',
+      message: "熟能生巧"
+    }
+  });
+</script>
+<style type="text/css">
+  [v-cloak] {
+    display: none
+  }
+</style>
+</body>
+
+</html>

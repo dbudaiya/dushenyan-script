@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>vue影响加深版（3）</title>
+  <script src="../源码/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1>{{message}}</h1>
+  <button id="btn" @click="btnclick" ref="mybtn">show</button>
+  <p v-if="isTrue">
+    显示段落: {{lowercasetitle}}
+  </p>
+  <hr>
+  <p>调用当前时间的方法：{{currentTime1()}}</p>
+  <p>当前时间的计算属性：{{currentTime2}}</p>
+  <hello></hello>
+</div>
+<div id="app2">
+  <h1>{{changemessage()}}</h1>
+  <mycpn></mycpn><!--重用代码-->
+</div>
+
+<template id="cpn"><!--template模板-->
+  <div>
+    <h1>hello</h1>
+  </div>
+</template>
+
+<script type="text/javascript">
+  const vm1 = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello Vue',
+      isTrue: false
+    },
+    methods: {
+      currentTime1: function () {
+        return Date.now();
+      },
+      btnclick() {
+        this.isTrue = !this.isTrue
+        this.updatetitle("This is NEW title");
+        this.$refs.mybtn.type = "this is button refs";//!
+      },
+      updatetitle: function (a) {
+        this.message = a;
+      }
+    },
+    computed: {
+      currentTime2: function () {
+        this.message;
+        return Date.now();
+      },
+      lowercasetitle() {
+        return this.message.toLowerCase();/*将字符串中的所有字母字符转换为小写*/
+      }
+    },
+    watch: {
+      message: function (newVal, oldVal) {
+        console.log(oldVal);
+      }
+    }
+  });
+  //全局组件
+  Vue.component("hello", {
+    template: `#cpn`
+  });
+
+  //提高代码的重用性
+  const cmp = {
+    data() {
+      return {
+        status: "hellossss"
+      }
+    },
+    template: "<div><p>{{status}}</p><button @click='changebtn'>btn</button></div>",
+    methods: {
+      changebtn: function () {
+        this.status = "enennnnnnnnnnnn"
+      }
+    }
+  };
+
+  const vm2 = new Vue({
+    el: '#app2',
+    data: {},
+    methods: {
+      changemessage: function () {
+        vm1.message = "change title";/*在实例中，调用另一个实例的属性来操作其他属性*/
+      }
+    },
+    components: {
+      "mycpn": cmp//将重用代码加载到app2里面的组件对象上
+    }
+  });//新实例
+  setTimeout(function () {/*在vue实例外面操作属性*/
+    vm1.message = "setTimeout change title"
+  }, 2000);
+  setTimeout(function () {/*在vue实例外面操作方法*/
+    vm1.btnclick();
+  }, 4000)
+</script>
+</body>
+</html>
